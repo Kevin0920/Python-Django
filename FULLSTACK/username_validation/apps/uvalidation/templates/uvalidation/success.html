@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Username Success</title>
+  </head>
+  <body>
+    {% if messages %}
+       {% for message in messages %}
+      <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+       {% endfor %}
+    {% endif %}
+    <!-- <form class="" action="/" method="post">
+      {% csrf_token %}
+      username: <input type="text" name="username" value="">
+      <button type="submit" name="button">Submit</button>
+
+    </form> -->
+    <table>
+      <tr style="background:#666;color:#fff">
+        <td>User name</td>
+        <td>time</td>
+        <td>Actions</td>
+      </tr>
+      {%for i in allusers %}
+        <tr>
+          <td>{{i.name}}</td>
+          <td>{{i.created_at}}</td>
+          <td>
+            <form class="" action="/success" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="delete" value="yes">
+              <input type="hidden" name="id" value="{{i.id}}">
+              <button type="submit" name="button">delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <a href="/">Add one more</a>
+
+    <style media="screen">
+      .error {
+        color:red;
+      }
+      .success {
+        color:green
+      }
+      table td {
+        padding:5px
+      }
+      table {
+        width:100%;
+
+      }
+    </style>
+  </body>
+</html>

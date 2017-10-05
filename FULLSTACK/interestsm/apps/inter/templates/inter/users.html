@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Users</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+    <table>
+        <tr>
+            <th>Users</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <th>{{user.name}}</th>
+                <th><a href="/interests/{{user.name}}">View</a></th>
+            </tr>
+        {% endfor%}
+    </table>
+        
+    </body>
+</html>

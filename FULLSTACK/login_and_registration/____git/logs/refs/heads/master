@@ -1,0 +1,4 @@
+0000000000000000000000000000000000000000 2af995298c15a1cbddbbf0eab2c8ad19aff1f105 chosenman <chosenman2008@gmail.com> 1498513677 -0700	commit (initial): new repo
+2af995298c15a1cbddbbf0eab2c8ad19aff1f105 0cd45b41a5b52bcf2992f2bae4fc1df418aafba5 chosenman <chosenman2008@gmail.com> 1498526249 -0700	commit: finished login and registration properly, with dynamicly generated salt and taking it from previously stored password in db
+0cd45b41a5b52bcf2992f2bae4fc1df418aafba5 1aa52d67291ecc95f560dbe3b09718c9bb2cf48a chosenman <chosenman2008@gmail.com> 1498527362 -0700	commit: last changes
+1aa52d67291ecc95f560dbe3b09718c9bb2cf48a 24a60d8e4ec75d9090f99e439b2d1087ed6bad99 chosenman <chosenman2008@gmail.com> 1498681887 -0700	commit: sdf

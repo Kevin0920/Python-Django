@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="box">
+      <p>Random word (Attempt #{{request.session.attempt}})</p>
+      <h1>{{request.session.randomnumber}}</h1>
+      <form class="" action="/generate" method="post">
+        {% csrf_token %}
+        <button type="submit" name="button">Generage new</button>
+      </form>
+    </div>
+
+<style media="screen">
+  .box h1{
+    border:1px solid black
+  }
+  .box {
+    text-align:center;
+    width: 50%;
+    margin:100px auto 0 auto;
+  }
+</style>
+
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+    <a href="{% url 'logout' %}">Log out</a> | <a href="{% url 'addbrview' %}">Add Book and Review</a>
+    <h2>Add a new Book Title and a Review</h2>
+    <!-- <a href="/">go back</a><br> -->
+
+    <!-- ERRORS  -->
+    {% if messages %}
+      {% for message in messages %}
+            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+      {%endfor%}
+    {% endif %}
+    <!-- ERRORS  -->
+
+    <form class="" action="{% url 'addbrview' %}" method="post">
+      {% csrf_token %}
+        <p><b>Book Title:</b>
+          <input type="text" name="title" value="">
+        </p>
+        <p><b>Author: </b></p>
+        <p> Choose from the list:
+          <select name="author_existed">
+            {% if authors %}
+
+            {%else%}
+              <option default value="empty">empty</option>
+            {% endif %}
+         </select>
+        </p>
+        <p> Or add a new author:
+          <input type="text" name="author" value="">
+        </p>
+        <p><b>Review: <br></b>
+          <textarea name="review" rows="8" cols="50"></textarea>
+        </p>
+        <p> Rating:
+          <select class="" name="stars">
+            <option value="5" default>5</option>
+            <option value="4">4</option>
+            <option  value="3">3</option>
+            <option  value="2">2</option>
+            <option  value="1">1</option>
+          </select> stars.
+      </p>
+      <p>
+        <button type="submit" name="button">Add Book and Review</button>
+      </p>
+    </form>
+
+    <b>Copy this</b>
+    <p>Not the answer you're looking for? Browse other questions tagged</p>
+
+    {% if books %}
+      <div class="users_debug">
+        {% for i in books %}
+          <p>
+            <b><a href="books/{{i.id}}">"{{i.title}}"</a></b> by {{i.author.name}} <a href="delbook/{{i.id}}">delete</a>
+          </p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+<style media="screen">
+  .error {
+    color:red
+  }
+  button {
+    cursor: pointer;
+    padding: 5px;
+    background: yellow;
+    color:black;
+  }
+</style>
+
+  </body>
+</html>

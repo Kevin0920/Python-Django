@@ -1,0 +1,63 @@
+If you're using Mac:
+
+  > virtualenv djangoEnv
+  > source djangoEnv/bin/activate
+(djangoEnv)>pip install Django==1.10
+Copy
+
+If you're using a PC WINDOWS:
+
+  > python -m virtualenv djangoEnv
+  > call djangoEnv/scripts/activate
+(djangoEnv)>pip install django
+NOTE: All our videos are using bash, but to use the same commands on Windows Command Prompt, the analogous command for touch is nul>
+
+
+##### start (create folder) of new project on Django
+  django-admin startproject main
+
+#then we need to cd in this folder and run this command
+  python manage.py runserver
+
+  > cd main
+# Make a new apps directory
+  > mkdir apps
+# Navigate into apps
+  > cd apps
+
+# Bash: (Mac, Linux)
+  > touch __init__.py
+# PCs: (Command Prompt)
+  > nul> __init__.py
+
+  > python ../manage.py startapp first_app
+
+
+# Need to be in same directory as manage.py file
+  > python manage.py makemigrations
+  > python manage.py migrate
+
+
+
+
+
+>>>>>> DEPLOY
+
+sudo service nginx restart
+sudo service gunicorn restart
+
+
+>>>>>> HARD PULLL
+
+Add to settings.py
+ALLOWED_HOSTS = [’54.67.124.107’,’localhost’]
+
+Add the deployment stuff to settings.py locally and + add commit + push all changes
+
+From ec2 (elastic computer cloud) instance 
+
+Git diff
+Git fetch —all
+Git reset —hard origin/master
+
+sudo service gunicorn restart

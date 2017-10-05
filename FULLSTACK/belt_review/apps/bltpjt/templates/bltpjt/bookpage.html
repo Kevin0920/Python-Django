@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% if messages %}
+      {% for message in messages %}
+            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+      {%endfor%}
+    {% endif %}
+
+    <a href="{% url 'logout' %}">Log out</a> | <a href="{% url 'addbrview' %}">Add Book and Review</a>
+
+    <!-- <a href="/">go back</a><br> -->
+
+    {% if book %}
+      <div class="users_debug">
+        {% for i in book %}
+        <h1>{{i.title}}</h1>
+          <p>
+            Author: {{i.author.name}}
+          </p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if reviews %}
+      <div class="users_debug">
+        {% for i in reviews %}
+          {% for key in i.reviewed.all %}
+            <p>Stars: {{key.stars}}</p>
+            <p>Review: {{key.review}}</p>
+            <p>Author: {{key.author.fname}}</p>
+
+            {% if request.session.id == key.author.id %}
+              <a href="/delreview/{{key.author.id}}">delete</a>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </body>
+</html>

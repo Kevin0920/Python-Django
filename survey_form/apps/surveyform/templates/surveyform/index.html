@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey form</title>
+  </head>
+  <body>
+
+    <div id="wrapper">
+      <h1>SURVEY FORM</h1>
+
+      <form class="" action="/proccess" method="post">
+        {% csrf_token %}
+        <p>
+          Your name: <input type="text" name="name" value="">
+        </p>
+        <p>
+          Dojo Location:
+          <select class="" name="location">
+            <option value="San Jose">San Jose</option>
+            <option value="Los Angeles">Los Angeles</option>
+          </select>
+        </p>
+        <p>
+          Favorite Language:
+          <select class="" name="language">
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+          </select>
+        </p>
+        <p>
+          Comment:<br>
+          <textarea name="comment" rows="8" cols="80"></textarea>
+          <button type="submit" name="button">Submit</button>
+        </p>
+      </form>
+    </div>
+
+<style media="screen">
+#wrapper input, #wrapper select, #wrapper button {
+  float:right;
+}
+  #wrapper h1{
+    text-align:center;
+  }
+  #wrapper textarea{
+    width: 100%;
+  }
+  #wrapper {
+    padding:30px;
+    width:400px;
+    margin: 100px auto 0 auto;
+    border: 1px solid #333;
+  }
+  #wrapper button {
+    background: #4285F4;
+    border:0;
+    cursor:pointer;
+    color:#fff;
+    margin:5px;
+    padding:10px;
+  }
+</style>
+  </body>
+</html>

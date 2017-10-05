@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="text-align:center">
+    {{request.session.query}}
+    <form class="" action="/search" method="post">
+      {% csrf_token %}
+      <input type="text" name="query" value="">
+      <input type="submit" name="" value="search">
+    </form>
+
+    <h1>Hi, I'm Yarik</h1>
+    <h2>Welcome to my portfolio</h2>
+    <table style="width:100%">
+      <tr>
+        <td><a href="/projects">Projects</a><br>
+
+        Regular expressions are extremely useful in extracting information from text such as code, log files, spreadsheets, or even documents. And while there is a lot of theory behind formal languages, the following lessons and examples will explore the more practical uses of regular expressions so that you can use them as quickly as possible.</td>
+        <td><a href="/about">About</a><br>
+          The first thing to recognize when using regular expressions is that everything is essentially a character, and we are writing patterns to match a specific sequence of characters (also known as a string). Most patterns use normal ASCII, which includes letters, digits, punctuation and other symbols on your keyboard like %#$@!, but unicode characters can also be used to match any type of international text.
+
+</td>
+        <td>
+          <a href="/testimotionals">Testimotionals</a><br>
+Below are a couple lines of text, notice how the text changes to highlight the matching characters on each line as you type in the input field below. To continue to the next lesson, you will need to use the new syntax and concept introduced in each lesson to write a pattern that matches all the lines provided.
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>

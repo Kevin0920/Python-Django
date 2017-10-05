@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Confirmation</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Are you sure want to delete the following course</h1>
+
+      <p><b>Course name: </b>{{name}}</p><p>
+        <b>Course description: </b>{{description}}</p>
+
+
+    <form action="/courses/destroy/{{id}}" method="POST">
+        {% csrf_token %}
+        <input name="delete" type="hidden" value="yes">
+
+        <button type="submit">
+          <a href="javascript:void()">
+            ok
+          </a>
+        </button>
+        <a href="/">no</a>
+    </form>
+  </div>
+    <style>
+      a {
+        display:inline-block;
+        margin:20px
+      }
+      button {
+        cursor:pointer;
+        background:none;
+        border:none
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Index</title>
+  </head>
+  <body>
+    <form class="addForm" action="{% url 'users'%}" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" value="" placeholder="user name"><br>
+      <input type="text" name="int_name" value="" placeholder="interest"><br>
+      <input type="submit" name="" value="Subit">
+    </form>
+    {% if allusers %}
+      {% for user in allusers %}
+        <p>{{user.name}} (
+          {% for interest in user.all_interest.all %}
+            {{interest.iname}},
+          {% endfor %}
+          )</p>
+      {% endfor %}
+    {% endif %}
+    <style media="screen">
+      .addForm {
+        display:block;
+        width: 30%;
+        margin:100px auto;
+      }
+    </style>
+  </body>
+</html>

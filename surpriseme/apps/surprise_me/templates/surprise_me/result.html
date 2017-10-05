@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Result</title>
+  </head>
+  <body>
+    <div class="shuffle">
+      <h2>Surprises:</h2>
+      {% for i in request.session.result %}
+      {{i}}<br>
+      {% endfor %}
+    </div>
+    <style media="screen">
+
+        .shuffle {
+          text-align: center;
+          margin:100px auto;
+          width: 200px
+        }
+
+    </style>
+  </body>
+</html>

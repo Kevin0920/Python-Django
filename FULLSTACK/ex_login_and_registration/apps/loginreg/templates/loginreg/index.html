@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>login reg</title>
+  </head>
+  <body>
+    {% if messages %}
+      {% for message in messages %}
+            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+      {%endfor%}
+    {% endif %}
+    <h1>Registration</h1>
+    <form class="" action="/loginreg" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="reg">
+
+        <input type="text" name="fname" value="" placeholder="first name"><br>
+        <input type="text" name="lname" value="" placeholder="last name"><br>
+        <input type="text" name="email" value="" placeholder="email"><br>
+        <input type="password" name="password" value="" placeholder="password"><br>
+        <input type="password" name="repassword" value="" placeholder="repeat password"><br>
+
+        <input type="submit" name="" value="Register">
+    </form>
+    <h1>Login</h1>
+    <form class="" action="/loginreg" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="login">
+
+        <input type="text" name="email" value="" placeholder="email"><br>
+        <input type="password" name="password" value="" placeholder="password"><br>
+        <input type="submit" name="" value="Login">
+    </form>
+
+
+    {% if users %}
+      <div class="users_debug">
+        {% for user in users %}
+          <p>
+            {{user.fname}} {{user.lname}} <a href="deluser/{{user.id}}">delete</a>
+          </p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <style media="screen">
+      .error {
+        color:red;
+      }
+      .success {
+        color:green
+      }
+      table td {
+        padding:5px
+      }
+      table {
+        width:100%;
+
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+body {
+	position: relative;
+}
+
+
+img.ninjas {
+	position: absolute;
+	left: 50%;
+	margin-left:-200px;
+
+	width: 400px;
+}
+
+.stuff {
+	padding-top:320px;
+}

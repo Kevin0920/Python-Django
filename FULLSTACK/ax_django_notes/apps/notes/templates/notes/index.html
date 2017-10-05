@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Django Notes</title>
+    <script type="text/javascript" src='https://code.jquery.com/jquery-3.2.1.js'></script>
+  </head>
+  <body>
+
+      <h1>Ajax Django Notes</h1>
+      <div class="wrapper posts">
+        {% if notes %}
+          {% for note in notes%}
+            <div class="note">
+              {{note.text}}
+              <span><a href="/delnote/{{note.id}}">x</a></span>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+<h2>Add new note:</h2>
+      <!-- <form class="" action="/add" method="post"> -->
+      <form class="addnote" >
+        {% csrf_token %}
+        <textarea name="note" rows="8" cols="80"></textarea>
+        <button type="submit"  name="button">Add note</button>
+      </form>
+
+      <!-- NOW LET'S ADD SOME JAVASCRIPT TO STOP FORM SUBMISSION! -->
+      <script>
+        $( document ).ready(function() {
+            $('form.addnote').submit(function(e){
+              e.preventDefault()
+              $.ajax({
+                url: "/add",
+                method: "POST",
+                data: $(this).serialize(),
+                success: function(serverResponse){
+                      // Replace the html inside a div with the class "posts" with the server response
+                      $('.posts').html(serverResponse)
+                    }
+              })
+            })
+
+            function success(){
+              alert('datasent:')
+            }
+      });
+
+      </script>
+      <!-- ********************************* -->
+
+      <style media="screen">
+        * {
+
+        }
+        .wrapper {
+          display:flex;
+          -webkit-flex-flow: row wrap;
+        }
+        .note span a:hover {
+          color:red;
+        }
+        .note span a {
+          display: none;
+          position:absolute;
+          top:0px;
+          right:10px;
+          font-family: Arial;
+          cursor: pointer;
+          text-decoration: none;
+          color:black;
+        }
+        .note:hover span a {
+          display:inline;
+        }
+        .note {
+          position: relative;
+          width: 18%;
+          height:100px;
+          margin:20px 1%;
+          padding: 30px;
+          background:#FCFAAE;
+          font-size: 2em;
+          overflow-y:scroll;
+          box-shadow: 2px 3px 4px -1px #000000;
+        }
+      </style>
+  </body>
+</html>
